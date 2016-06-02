@@ -1,4 +1,4 @@
-var app = angular.module('lazerTanx',['ngRoute'])
+var app = angular.module('lazerTanx',['ngRoute','btford.socket-io'])
 
 app.config(['$routeProvider','$locationProvider',
     function($routeProvider,$locationProvider){

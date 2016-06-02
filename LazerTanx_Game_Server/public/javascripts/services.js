@@ -24,3 +24,13 @@ app.factory('userService',['$http','$window',function($http,$window){
     }
     return user
 }])
+
+app.factory('socketService', function (socketFactory) {
+    var myIoSocket = io.connect('/some/path');
+
+    mySocket = socketFactory({
+        ioSocket: myIoSocket
+    });
+
+    return mySocket;
+});
