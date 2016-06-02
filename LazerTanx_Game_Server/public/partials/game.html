@@ -3,8 +3,7 @@
 
 </div>
 players:
-<div ng-repeat='player in players'>
-    <div>{{player.id}}</div>
+<div ng-repeat='p in players'>
+    <div ng-class="{bold: p.id==player.id}"
+>{{p.username}}</div>
 </div>
-<br>player:<br>
-{{player.id}}

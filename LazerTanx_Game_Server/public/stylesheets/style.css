@@ -9,4 +9,7 @@ a {
 .container-flex{
     display:flex;
 }
+.bold{
+    font-weight: 700;
+}
  /*.ng-invalid input { border: 1px solid red; }*/

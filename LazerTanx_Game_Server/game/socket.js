@@ -13,7 +13,7 @@ module.exports = function(io){
     var keys = [K_w,K_s,K_a,K_d,K_space,K_q,K_e]
     io.on('connection',function(socket){
         // Request the username and info for the socket
-
+        console.log('connected');
         socket.emit('initRequest',socket.id)
         socket.emit('initPlayers',clients)
 

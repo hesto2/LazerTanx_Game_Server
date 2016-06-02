@@ -14,6 +14,8 @@ app.controller('gameCtrl', ['$scope','$location','userService','$interval','sock
     if(userService.getIpAddress() === null || userService.getUsername() === null){
         $location.path('/home')
     }
+    console.log(1);
+    socketService.connect()
     var baseUrl = 'http://'+userService.getIpAddress()+':12345/html/cam_pic.php?time='
     $scope.feedUrl = ''
 
@@ -22,7 +24,7 @@ app.controller('gameCtrl', ['$scope','$location','userService','$interval','sock
         $scope.feedUrl = baseUrl+currentTime
     }
 
-    $interval(reloadImage,100)
+    // $interval(reloadImage,100)
 
     // Socket commands for game
     var K_w=87
@@ -85,13 +87,19 @@ app.controller('gameCtrl', ['$scope','$location','userService','$interval','sock
         gameService.playerConnected(player)
     })
 
+    $scope.$on('socket:playerDisconnected',function(request,id){
+        gameService.playerDisconnected(id)
+    })
+
     $scope.$on('game:playersUpdated',function(request,players){
 
         $scope.players = players
     })
 
-    $scope.$on('socket:playerDisconnected',function(request,id){
-        gameService.playerDisconnected(id)
-    })
-
+    $scope.$on('$locationChangeStart', function( event ) {
+        angular.element($window).unbind('keydown')
+        angular.element($window).unbind('keyup')
+        socketService.disconnect()
+        console.log('disconnected');
+    });
 }]);

@@ -48,6 +48,7 @@ app.factory('gameService',['$rootScope',function($rootScope){
         players:[]
     }
     game.init = function(players){
+        game.players = []
         players.forEach(function(player){
             game.playerConnected(player);
         })
