@@ -11,7 +11,7 @@ app.controller('homeCtrl', ['$scope','$location','userService',function($scope,$
 }]);
 
 app.controller('gameCtrl', ['$scope','$location','userService','$interval',function($scope,$location,userService,$interval) {
-    var baseUrl = 'http://'+userService.getIpAddress+'/html/cam_pic.php?time='
+    var baseUrl = 'http://'+userService.getIpAddress()+':12345/html/cam_pic.php?time='
     $scope.feedUrl = ''
 
     var reloadImage =  function(){

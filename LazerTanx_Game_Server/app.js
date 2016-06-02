@@ -1,15 +1,18 @@
-var express = require('express');
+var app = require('express')();
+var express = require('express')
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+server.listen(3000)
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-var app = express();
 
+require('./game/socket')(io)
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
