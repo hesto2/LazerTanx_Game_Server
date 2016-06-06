@@ -1,4 +1,4 @@
-var app = angular.module('lazerTanx');
+// var app = angular.module('lazerTanx');
 
 app.controller('homeCtrl', ['$scope','$location','userService',function($scope,$location,userService) {
   $scope.submitForm = function(){
@@ -24,7 +24,7 @@ app.controller('gameCtrl', ['$scope','$location','userService','$interval','sock
         $scope.feedUrl = baseUrl+currentTime
     }
 
-    // $interval(reloadImage,100)
+    $interval(reloadImage,100)
 
     // Socket commands for game
     var K_w=87
